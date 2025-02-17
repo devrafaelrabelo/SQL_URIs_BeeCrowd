@@ -1,0 +1,40 @@
+package com.DesafiosBeeCrowd.demo;
+
+import com.DesafiosBeeCrowd.demo.dto.CustomerMinDTO;
+import com.DesafiosBeeCrowd.demo.projections.CustomerMinProjection;
+import com.DesafiosBeeCrowd.demo.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@SpringBootApplication
+public class appMenuApplication implements CommandLineRunner {
+
+	@Autowired
+	private CustomerRepository repository;
+
+	public static void main(String[] args) {
+		SpringApplication.run(appMenuApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
+		System.out.println("Iniciando SQL....");
+		List<CustomerMinProjection> list = repository.search1("Porto Alegre");
+		List<CustomerMinDTO> result1 = list.stream().map(CustomerMinDTO::new).collect(Collectors.toList());
+		for(CustomerMinDTO obj : result1) {
+			System.out.println(obj);
+		}
+
+		System.out.println("Iniciando JPQL....");
+		List<CustomerMinDTO> result2 = repository.search2("Porto Alegre");
+		for(CustomerMinDTO obj : result2) {
+			System.out.println(obj);
+		}
+	}
+}
