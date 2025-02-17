@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Uri2602Application  implements CommandLineRunner {
@@ -24,11 +23,19 @@ public class Uri2602Application  implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("AQUIIIIII");
+		System.out.println("SQL");
 		List<CustomerMinProjection> list = repository.search1("RS");
-		List<CustomerMinDTO> result1 = list.stream().map(x -> new CustomerMinDTO(x)).collect(Collectors.toList());
+		List<CustomerMinDTO> result1 = list.stream().map(CustomerMinDTO::new).toList();
 
 		for(CustomerMinDTO obj : result1) {
+			System.out.println(obj);
+		}
+
+
+		System.out.println("JPQL");
+		List<CustomerMinDTO> result2 = repository.search2("RS");
+
+		for(CustomerMinDTO obj : result2) {
 			System.out.println(obj);
 		}
 	}
