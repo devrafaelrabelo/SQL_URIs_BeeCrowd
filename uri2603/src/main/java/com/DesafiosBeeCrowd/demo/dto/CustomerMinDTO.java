@@ -39,9 +39,6 @@ public class CustomerMinDTO {
 
     @Override
     public String toString() {
-        return "CustomerMinDTO{" +
-                "name='" + name + '\'' +
-                ", street='" + street + '\'' +
-                '}';
+        return name + " | " + street;
     }
 }
