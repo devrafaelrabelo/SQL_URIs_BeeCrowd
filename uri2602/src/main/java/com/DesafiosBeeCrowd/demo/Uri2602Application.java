@@ -31,7 +31,6 @@ public class Uri2602Application  implements CommandLineRunner {
 			System.out.println(obj);
 		}
 
-
 		System.out.println("JPQL");
 		List<CustomerMinDTO> result2 = repository.search2("RS");
 
