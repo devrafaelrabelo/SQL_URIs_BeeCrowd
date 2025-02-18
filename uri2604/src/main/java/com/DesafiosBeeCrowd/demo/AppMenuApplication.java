@@ -24,10 +24,11 @@ public class AppMenuApplication implements CommandLineRunner {
 
 
 		System.out.println("SQL");
-		List<ProductsMinProjection> result1 = repository.search1(10, 100);
+		List<ProductsMinProjection> list = repository.search1(10, 100);
+		List<ProductsMinDTO> result1 = list.stream().map(ProductsMinDTO::new).toList();
 
-		for (ProductsMinProjection obj : result1) {
-			System.out.println(obj.getId() + " | " + obj.getName());
+		for (ProductsMinDTO obj : result1) {
+			System.out.println(obj);
 		}
 
 		System.out.println("JPQL");

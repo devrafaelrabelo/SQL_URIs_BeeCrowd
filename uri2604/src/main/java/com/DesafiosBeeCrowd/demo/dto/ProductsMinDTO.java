@@ -19,10 +19,7 @@ public class ProductsMinDTO {
 
     @Override
     public String toString() {
-        return "ProductsMinDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return id + " | " + name;
     }
 
     public Long getId() {
