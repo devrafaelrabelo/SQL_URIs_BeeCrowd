@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "legal_person")
 public class LegalPerson {
 
-
+    @Id
     @ManyToOne
     @JoinColumn(name = "id_customers")
     private Customer customer;
