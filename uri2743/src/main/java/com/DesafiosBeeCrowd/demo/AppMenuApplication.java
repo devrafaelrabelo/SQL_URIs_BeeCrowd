@@ -38,6 +38,5 @@ public class AppMenuApplication implements CommandLineRunner {
 			System.out.println(obj);
 		}
 
-
 	}
 }
